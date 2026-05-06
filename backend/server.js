@@ -2,6 +2,13 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const cron = require('node-cron');
+const scrapeHackerNews = require('./utils/scraper');
+
+// Route files
+const authRoutes = require('./routes/authRoutes');
+const storyRoutes = require('./routes/storyRoutes');
+const { manualScrape } = require('./controllers/storyController');
 
 // Load env vars
 dotenv.config();
@@ -21,6 +28,20 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
+
+// Mount routes
+app.use('/api/auth', authRoutes);
+app.use('/api/stories', storyRoutes);
+app.post('/api/scrape', manualScrape);
+
+// Schedule scraper to run automatically
+cron.schedule('0 * * * *', () => { // runs every hour
+  console.log('Running cron job: Scrape Hacker News');
+  scrapeHackerNews();
+});
+
+// Run scraper on server start
+scrapeHackerNews();
 
 const PORT = process.env.PORT || 5000;
 
