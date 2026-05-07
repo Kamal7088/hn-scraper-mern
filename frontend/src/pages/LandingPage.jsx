@@ -69,7 +69,7 @@ const LandingPage = () => {
           transform: translateX(-50%);
           width: 80%;
           height: 600px;
-          background: radial-gradient(circle, rgba(79, 70, 229, 0.04) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(255, 102, 0, 0.04) 0%, transparent 70%);
           z-index: -1;
           pointer-events: none;
         }
@@ -169,9 +169,9 @@ const LandingPage = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--text-primary);
+          background: var(--primary);
           border-radius: 20px;
-          box-shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+          box-shadow: 0 15px 30px -10px rgba(255, 102, 0, 0.4);
         }
         
         .feature-card h3 {
