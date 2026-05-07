@@ -14,16 +14,18 @@ const Navbar = () => {
 
   return (
     <nav className="container">
-      <Link to="/" className="logo">
+      <Link to={user ? "/home" : "/"} className="logo">
         <Globe size={24} />
         <span>HN Scraper</span>
       </Link>
       
       <div className="nav-links">
-        <Link to="/" className="btn btn-outline">
-          <Home size={18} />
-          <span>Home</span>
-        </Link>
+        {user && (
+          <Link to="/home" className="btn btn-outline">
+            <Home size={18} />
+            <span>Feed</span>
+          </Link>
+        )}
         
         {user ? (
           <>

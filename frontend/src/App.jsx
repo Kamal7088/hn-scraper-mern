@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Bookmarks from './pages/Bookmarks';
 
+import LandingPage from './pages/LandingPage';
+
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   
@@ -17,13 +19,26 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  const { user } = useContext(AuthContext);
+
   return (
     <>
       <Navbar />
       <main style={{ paddingBottom: '50px' }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={user ? <Navigate to="/home" /> : <LandingPage />} />
+          <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
+          <Route path="/register" element={user ? <Navigate to="/home" /> : <Register />} />
+          
+          <Route 
+            path="/home" 
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } 
+          />
+          
           <Route 
             path="/bookmarks" 
             element={

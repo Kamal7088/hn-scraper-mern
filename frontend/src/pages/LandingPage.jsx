@@ -1,0 +1,222 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight, Globe, Zap, Bookmark, Shield } from 'lucide-react';
+
+const LandingPage = () => {
+  return (
+    <div className="landing-container">
+      <section className="hero fade-in">
+        <div className="hero-content">
+          <div className="badge">
+            <Zap size={14} />
+            <span>Real-time HN Scraper</span>
+          </div>
+          <h1>
+            Discover the <span className="text-gradient">Top Stories</span> from Hacker News
+          </h1>
+          <p>
+            Experience Hacker News like never before. A premium, glassmorphism-inspired interface 
+            to browse, save, and manage the best in tech news.
+          </p>
+          <div className="hero-btns">
+            <Link to="/register" className="btn btn-primary btn-lg">
+              Get Started <ArrowRight size={18} />
+            </Link>
+            <Link to="/login" className="btn btn-outline btn-lg">
+              Login to Account
+            </Link>
+          </div>
+        </div>
+        
+        <div className="hero-visual">
+          <div className="visual-card glass">
+            <div className="visual-header">
+              <div className="dot red"></div>
+              <div className="dot yellow"></div>
+              <div className="dot green"></div>
+            </div>
+            <div className="visual-body">
+              <div className="skeleton skeleton-text" style={{ width: '90%' }}></div>
+              <div className="skeleton skeleton-text" style={{ width: '70%' }}></div>
+              <div className="skeleton skeleton-meta" style={{ width: '40%' }}></div>
+              <div style={{ height: '20px' }}></div>
+              <div className="skeleton skeleton-text" style={{ width: '85%' }}></div>
+              <div className="skeleton skeleton-text" style={{ width: '60%' }}></div>
+              <div className="skeleton skeleton-meta" style={{ width: '35%' }}></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="features container">
+        <div className="feature-card glass">
+          <Globe className="feature-icon" color="var(--primary)" />
+          <h3>Real-time Scraping</h3>
+          <p>Always stay updated with the latest top 10 stories directly from Y Combinator.</p>
+        </div>
+        <div className="feature-card glass">
+          <Bookmark className="feature-icon" color="var(--primary)" />
+          <h3>Smart Bookmarks</h3>
+          <p>Save your favorite articles to your personal collection with a single click.</p>
+        </div>
+        <div className="feature-card glass">
+          <Shield className="feature-icon" color="var(--primary)" />
+          <h3>Secure Access</h3>
+          <p>JWT-based authentication ensures your data and favorites are always private.</p>
+        </div>
+      </section>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        .landing-container {
+          padding-top: 40px;
+        }
+        
+        .hero {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 60px;
+          min-height: 70vh;
+          max-width: 1200px;
+          margin: 0 auto 100px;
+          padding: 0 20px;
+        }
+        
+        .hero-content {
+          flex: 1;
+        }
+        
+        .hero-content h1 {
+          font-size: 64px;
+          line-height: 1.1;
+          margin-bottom: 24px;
+          font-weight: 800;
+          letter-spacing: -2px;
+        }
+        
+        .hero-content p {
+          font-size: 18px;
+          color: var(--text-secondary);
+          margin-bottom: 40px;
+          line-height: 1.6;
+          max-width: 500px;
+        }
+        
+        .badge {
+          display: inline-flex;
+          align-items: center;gap: 8px;
+          padding: 6px 12px;
+          background: rgba(245, 158, 11, 0.1);
+          color: var(--primary);
+          border-radius: 20px;
+          font-size: 13px;
+          font-weight: 600;
+          margin-bottom: 24px;
+          border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        .hero-btns {
+          display: flex;
+          gap: 16px;
+        }
+        
+        .btn-lg {
+          padding: 14px 28px;
+          font-size: 16px;
+        }
+        
+        .hero-visual {
+          flex: 1;
+          position: relative;
+        }
+        
+        .visual-card {
+          width: 100%;
+          padding: 24px;
+          transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
+          box-shadow: 20px 40px 60px rgba(0,0,0,0.5);
+        }
+        
+        .visual-header {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 24px;
+        }
+        
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+        
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+        
+        .text-gradient {
+          background: linear-gradient(135deg, var(--primary), var(--accent));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        
+        .features {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          margin-bottom: 100px;
+        }
+        
+        .feature-card {
+          padding: 40px;
+          text-align: center;
+          transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+          transform: translateY(-10px);
+          border-color: var(--primary);
+        }
+        
+        .feature-icon {
+          width: 48px;
+          height: 48px;
+          margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+          font-size: 20px;
+          margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+          color: var(--text-secondary);
+          line-height: 1.5;
+        }
+        
+        @media (max-width: 1024px) {
+          .hero {
+            flex-direction: column;
+            text-align: center;
+          }
+          
+          .hero-content p {
+            margin: 0 auto 40px;
+          }
+          
+          .hero-btns {
+            justify-content: center;
+          }
+          
+          .hero-visual {
+            display: none;
+          }
+          
+          .features {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}} />
+    </div>
+  );
+};
+
+export default LandingPage;
