@@ -27,41 +27,32 @@ const LandingPage = () => {
           </div>
         </div>
         
-        <div className="hero-visual">
-          <div className="visual-card">
-            <div className="visual-header">
-              <div className="dot red"></div>
-              <div className="dot yellow"></div>
-              <div className="dot green"></div>
-            </div>
-            <div className="visual-body">
-              <div className="skeleton skeleton-text" style={{ width: '90%' }}></div>
-              <div className="skeleton skeleton-text" style={{ width: '70%' }}></div>
-              <div className="skeleton skeleton-meta" style={{ width: '40%' }}></div>
-              <div style={{ height: '20px' }}></div>
-              <div className="skeleton skeleton-text" style={{ width: '85%' }}></div>
-              <div className="skeleton skeleton-text" style={{ width: '60%' }}></div>
-              <div className="skeleton skeleton-meta" style={{ width: '35%' }}></div>
-            </div>
+        <div className="hero-visual fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="visual-wrapper floating">
+            <img 
+              src="/assets/hero.png" 
+              alt="HN Scraper Dashboard" 
+              className="hero-image"
+            />
           </div>
         </div>
       </section>
 
       <section className="features container">
-        <div className="feature-card glass">
+        <div className="feature-card glass fade-in" style={{ animationDelay: '0.5s' }}>
           <Globe className="feature-icon" color="var(--primary)" />
           <h3>Real-time Scraping</h3>
-          <p>Always stay updated with the latest top 10 stories directly from Y Combinator.</p>
+          <p>Always stay updated with the latest top 10 stories directly from Y Combinator with zero latency.</p>
         </div>
-        <div className="feature-card glass">
+        <div className="feature-card glass fade-in" style={{ animationDelay: '0.7s' }}>
           <Bookmark className="feature-icon" color="var(--primary)" />
-          <h3>Smart Bookmarks</h3>
-          <p>Save your favorite articles to your personal collection with a single click.</p>
+          <h3>Personal Library</h3>
+          <p>Save your favorite articles to your personal collection and build your knowledge base effortlessly.</p>
         </div>
-        <div className="feature-card glass">
+        <div className="feature-card glass fade-in" style={{ animationDelay: '0.9s' }}>
           <Shield className="feature-icon" color="var(--primary)" />
           <h3>Secure Access</h3>
-          <p>JWT-based authentication ensures your data and favorites are always private.</p>
+          <p>State-of-the-art JWT authentication ensures your curated data and favorites remain private and safe.</p>
         </div>
       </section>
 
@@ -134,32 +125,35 @@ const LandingPage = () => {
           justify-content: center;
         }
         
-        .visual-card {
+        .visual-wrapper {
           width: 100%;
-          max-width: 450px;
-          padding: 32px;
-          background: #ffffff;
-          border-radius: 24px;
+          max-width: 550px;
+          border-radius: 30px;
+          overflow: hidden;
+          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.2);
           border: 1px solid var(--glass-border);
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-          transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+          transform: perspective(1000px) rotateY(-5deg);
+          transition: var(--transition);
         }
         
-        .visual-header {
-          display: flex;
-          gap: 8px;
-          margin-bottom: 32px;
+        .visual-wrapper:hover {
+          transform: perspective(1000px) rotateY(0deg) scale(1.02);
         }
         
-        .dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
+        .hero-image {
+          width: 100%;
+          display: block;
         }
-        
-        .red { background: #fee2e2; border: 1.5px solid #ef4444; }
-        .yellow { background: #fef3c7; border: 1.5px solid #f59e0b; }
-        .green { background: #dcfce7; border: 1.5px solid #10b981; }
+
+        @keyframes float {
+          0% { transform: translateY(0px) perspective(1000px) rotateY(-5deg); }
+          50% { transform: translateY(-20px) perspective(1000px) rotateY(-5deg); }
+          100% { transform: translateY(0px) perspective(1000px) rotateY(-5deg); }
+        }
+
+        .floating {
+          animation: float 6s ease-in-out infinite;
+        }
         
         .text-gradient {
           background: linear-gradient(135deg, var(--primary), var(--accent));
