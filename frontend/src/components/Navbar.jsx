@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="container">
       <Link to={user ? "/home" : "/"} className="logo">
-        <Globe size={24} />
+        <div className="logo-icon">HN</div>
         <span>HN Scraper</span>
       </Link>
       
