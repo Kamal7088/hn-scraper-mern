@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary: #ff6600; /* HN Orange */
-  --primary-hover: #e65c00;
+  --primary: #ff5500; /* Electric Orange */
+  --primary-glow: rgba(255, 85, 0, 0.4);
   --bg-color: #ffffff;
   --card-bg: #ffffff;
   --glass-border: #f1f5f9;
-  --text-primary: #1a1a1a; /* Very Deep Gray */
-  --text-secondary: #6b7280;
-  --accent: #ffb380;
-  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
-  --shadow-md: 0 12px 24px -10px rgba(255, 102, 0, 0.15);
-  --shadow-lg: 0 30px 60px -20px rgba(255, 102, 0, 0.2);
+  --text-primary: #0a0a0a;
+  --text-secondary: #525252;
+  --accent: #ff8800;
+  --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-premium: 0 20px 50px -12px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -27,278 +25,249 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.03) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.03) 0px, transparent 50%);
+  line-height: 1.5;
+}
+
+/* World Class Background */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(at 0% 0%, rgba(255, 85, 0, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 136, 0, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 85, 0, 0.03) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(255, 136, 0, 0.03) 0px, transparent 50%);
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
-/* Expert Card Styling */
-.glass {
-  background: var(--card-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+/* Premium Card with Border Beam Effect */
+.card-premium {
+  background: white;
+  border: 1px solid #f1f5f9;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
   transition: var(--transition);
 }
 
-/* High-End Buttons */
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.card-premium:hover::before {
+  transform: translateX(100%);
+}
+
+.card-premium:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--shadow-premium);
+  border-color: #e2e8f0;
+}
+
+/* World Class Buttons */
 .btn {
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
   border: none;
-  font-size: 15px;
+  font-size: 16px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.3px;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: var(--text-primary);
   color: #ffffff;
 }
 
 .btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 40px -10px rgba(255, 102, 0, 0.3);
+  background: var(--primary);
+  box-shadow: 0 20px 40px var(--primary-glow);
 }
 
 .btn-outline {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e5e5e5;
   color: var(--text-primary);
 }
 
 .btn-outline:hover {
-  background: #f8fafc;
+  background: #fafafa;
   border-color: var(--text-primary);
 }
 
-/* Floating Navbar */
+/* Minimal Floating Navbar */
 nav {
-  height: 68px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 24px;
   z-index: 1000;
-  margin: 24px auto 60px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 100px;
-  padding: 0 32px;
-  width: 95%;
-  max-width: 1000px;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+  margin: 24px auto 80px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(243, 244, 246, 0.6);
+  border-radius: 20px;
+  padding: 0 40px;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 12px;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
+.logo-mark {
+  width: 36px;
+  height: 36px;
   background: var(--primary);
-  color: white;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  font-size: 14px;
+  color: white;
   font-weight: 900;
+  font-size: 14px;
+  box-shadow: 0 8px 16px var(--primary-glow);
 }
 
-.nav-links {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+/* World Class Animations */
+@keyframes revealUp {
+  0% { opacity: 0; transform: translateY(40px) skewY(2deg); }
+  100% { opacity: 1; transform: translateY(0) skewY(0deg); }
 }
 
-/* Advanced Entrance Animations */
-@keyframes expertFade {
-  0% { opacity: 0; transform: translateY(30px) scale(0.98); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+.reveal {
+  animation: revealUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-.fade-in {
-  animation: expertFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Auth Section */
+/* Auth Cards */
 .auth-grid {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
+  min-height: 60vh;
 }
 
 .auth-card {
   width: 100%;
-  max-width: 440px;
-  padding: 48px;
-  box-shadow: var(--shadow-lg);
-}
-
-.input-group {
-  margin-bottom: 24px;
+  max-width: 460px;
+  padding: 56px;
+  border-radius: 32px;
+  box-shadow: var(--shadow-premium);
 }
 
 .input-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
 }
 
 .input-group input {
   width: 100%;
-  padding: 14px 18px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  color: var(--text-primary);
+  padding: 16px 20px;
+  border: 2px solid #f1f5f9;
+  border-radius: 16px;
   font-family: inherit;
+  font-weight: 500;
   transition: var(--transition);
 }
 
 .input-group input:focus {
   outline: none;
-  border-color: var(--text-primary);
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(2, 6, 23, 0.05);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
 }
 
-/* Premium Story Cards */
+/* Premium News Grid */
 .stories-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 
 .story-card {
-  padding: 32px;
+  padding: 40px;
+  border-radius: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 24px;
-}
-
-.story-card:hover {
-  background: #ffffff;
-  border-color: var(--text-primary);
-  box-shadow: var(--shadow-md);
-  transform: scale(1.01);
 }
 
 .story-content h3 {
-  font-size: 20px;
-  margin-bottom: 14px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.4px;
-}
-
-.story-content h3 a {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
   color: var(--text-primary);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.story-content h3 a:hover {
-  color: var(--primary);
 }
 
 .story-meta {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   font-size: 14px;
+  font-weight: 600;
   color: var(--text-secondary);
-  font-weight: 500;
 }
 
-.bookmark-btn {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  cursor: pointer;
-  color: var(--text-secondary);
-  padding: 12px;
-  border-radius: 14px;
-  transition: var(--transition);
+/* Bento Grid System */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 24px;
 }
 
-.bookmark-btn:hover {
-  border-color: var(--text-primary);
-  color: var(--text-primary);
-  transform: rotate(15deg);
+.bento-item {
+  grid-column: span 4;
+  padding: 48px;
 }
 
-.bookmark-btn.active {
-  background: var(--text-primary);
-  color: #ffffff;
-  border-color: var(--text-primary);
+.bento-large {
+  grid-column: span 8;
 }
 
-/* Expert Skeleton */
-.skeleton {
-  background: #f1f5f9;
-  position: relative;
-  overflow: hidden;
-}
-
-.skeleton::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-  animation: shine 1.5s infinite;
-}
-
-@keyframes shine {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
-}
-
-/* Expert Pagination */
-.pagination {
-  margin-top: 60px;
-  gap: 16px;
-}
-
-.page-info {
-  font-weight: 700;
-  font-size: 15px;
-}
-
-/* Custom Scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -306,30 +275,21 @@ nav {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e2e8f0;
+  background: #f1f5f9;
   border-radius: 10px;
-  border: 3px solid #ffffff;
+  border: 4px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: #e2e8f0;
 }
 
-/* Responsive Expert View */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .bento-item {
+    grid-column: span 12;
+  }
+  
   nav {
-    padding: 0 20px;
-  }
-  
-  .logo span {
-    display: none;
-  }
-  
-  .story-card {
-    padding: 24px;
-  }
-  
-  .auth-card {
-    padding: 32px;
+    padding: 0 24px;
   }
 }

@@ -15,8 +15,8 @@ const Navbar = () => {
   return (
     <nav className="container">
       <Link to={user ? "/home" : "/"} className="logo">
-        <div className="logo-icon">HN</div>
-        <span>HN Scraper</span>
+        <div className="logo-mark">HN</div>
+        <span>The Insider</span>
       </Link>
       
       <div className="nav-links">
