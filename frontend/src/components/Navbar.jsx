@@ -43,8 +43,9 @@ const Navbar = () => {
             </div>
           </>
         ) : (
-          <Link to="/login" className="btn btn-primary">
-            Login / Register
+          <Link to="/register" className="btn btn-primary" style={{ borderRadius: '16px', padding: '14px 28px' }}>
+            <span>Initialize System</span>
+            <Globe size={18} style={{ marginLeft: '10px' }} />
           </Link>
         )}
       </div>

@@ -23,9 +23,10 @@ const Landing = () => {
               high-signal intelligence for the world's most ambitious engineers.
             </p>
             <div className="hero-actions reveal" style={{ animationDelay: '0.3s' }}>
-              <Link to="/register" className="btn-v3 btn-v3-primary">
-                Initialize System <ArrowRight size={20} />
-              </Link>
+              <Link to="/register" className="btn btn-primary" style={{ borderRadius: '14px', padding: '12px 24px' }}>
+            <span>Initialize System</span>
+            <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+          </Link>
               <Link to="/login" className="btn-v3 btn-v3-ghost">
                 Secure Login
               </Link>
@@ -386,13 +387,14 @@ const Landing = () => {
 
         /* Entrance Animation */
         .reveal {
-          opacity: 0;
-          transform: translateY(30px);
-          animation: reveal-v3 1s var(--transition-v3) forwards;
+          opacity: 1;
+          transform: translateY(0);
+          animation: reveal-v3 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
 
         @keyframes reveal-v3 {
-          to { opacity: 1; transform: translateY(0); }
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 1024px) {
