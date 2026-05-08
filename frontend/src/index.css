@@ -131,8 +131,8 @@ body {
   animation: revealUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-/* Minimal Floating Navbar */
-nav {
+
+/* nav {
   height: 80px;
   display: flex;
   align-items: center;
@@ -177,8 +177,52 @@ nav {
   font-weight: 900;
   font-size: 14px;
   box-shadow: 0 8px 16px var(--primary-glow);
+} */
+
+
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  /* Centering Fixes */
+  justify-content: center; /* Aligns buttons horizontally in the center */
+  width: 100%;            /* Ensures the div takes full width to allow centering */
 }
 
+/* Optional: Ensure buttons don't stack awkwardly on very small screens */
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+.auth-footer p { 
+  color: #ffffff; /* This makes the "If you don't..." text white */
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Ensure the link remains distinct but readable */
+.auth-link { 
+  color: var(--primary); /* Keep your orange for the link */
+  text-decoration: none; 
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+
+.auth-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
 /* World Class Animations */
 @keyframes revealUp {
   0% { opacity: 0; transform: translateY(40px) skewY(2deg); }
