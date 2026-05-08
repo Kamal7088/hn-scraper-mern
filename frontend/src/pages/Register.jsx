@@ -29,7 +29,7 @@ const Register = () => {
 
     try {
       await register(username, password);
-      navigate('/');
+      navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed. Please try again.');
     } finally {

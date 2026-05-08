@@ -33,9 +33,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (username, password) => {
-    const { data } = await api.post('/auth/register', { username, password });
-    localStorage.setItem('token', data.token);
-    setUser({ _id: data._id, username: data.username, bookmarks: data.bookmarks });
+    await api.post('/auth/register', { username, password });
   };
 
   const logout = () => {

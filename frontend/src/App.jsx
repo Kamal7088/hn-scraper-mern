@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import Navbar from './components/Navbar';
@@ -20,10 +20,12 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const hideNavbarRoutes = ['/login', '/register'];
 
   return (
     <>
-      <Navbar />
+      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
       <main style={{ paddingBottom: '50px' }}>
         <Routes>
           <Route path="/" element={user ? <Navigate to="/home" /> : <Landing />} />
