@@ -8,10 +8,16 @@ const generateToken = require('../utils/generateToken');
  */
 const registerUser = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
+    username = username?.trim().toLowerCase();
+    password = password?.trim();
 
-    // Check if the user already exists in the system
-    const userExists = await User.findOne({ username });
+    if (!username || !password) {
+      return res.status(400).json({ message: 'Username and password are required.' });
+    }
+
+    // Check if the user already exists in the system (case-insensitive)
+    const userExists = await User.findOne({ username: { $regex: `^${username}$`, $options: 'i' } });
 
     if (userExists) {
       return res.status(400).json({ message: 'Username is already taken. Please choose another.' });
@@ -46,9 +52,15 @@ const registerUser = async (req, res) => {
  */
 const loginUser = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
+    username = username?.trim().toLowerCase();
+    password = password?.trim();
 
-    const user = await User.findOne({ username });
+    if (!username || !password) {
+      return res.status(400).json({ message: 'Username and password are required.' });
+    }
+
+    const user = await User.findOne({ username: { $regex: `^${username}$`, $options: 'i' } }).populate('bookmarks');
 
     // Validate credentials using the matchPassword method defined in the User model
     if (user && (await user.matchPassword(password))) {

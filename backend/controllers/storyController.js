@@ -72,7 +72,7 @@ const toggleBookmark = async (req, res) => {
     }
 
     // Toggle logic: remove if exists, add if not
-    const isBookmarked = user.bookmarks.includes(storyId);
+    const isBookmarked = user.bookmarks.some(id => id.toString() === storyId);
 
     if (isBookmarked) {
       user.bookmarks = user.bookmarks.filter(id => id.toString() !== storyId);
@@ -90,7 +90,8 @@ const toggleBookmark = async (req, res) => {
       bookmarks: updatedUser.bookmarks 
     });
   } catch (error) {
-    res.status(500).json({ message: 'An error occurred while toggling the bookmark.' });
+    console.error('Bookmark toggle error:', error);
+    res.status(500).json({ message: 'An error occurred while toggling the bookmark.', error: error.message });
   }
 };
 

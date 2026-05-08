@@ -1,12 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Bookmark, ExternalLink, User, Clock, Star } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../api/api';
 
 const StoryCard = ({ story }) => {
-  const { user, toggleBookmarkContext } = useContext(AuthContext);
-  const [isBookmarked, setIsBookmarked] = useState(
-    user?.bookmarks.some(b => b === story._id || b._id === story._id)
+  const { user, updateBookmarks } = useContext(AuthContext);
+  const storyId = String(story._id);
+  const normalizeBookmarkId = (bookmark) => {
+    if (!bookmark) return '';
+    if (typeof bookmark === 'string') return bookmark;
+    if (typeof bookmark._id !== 'undefined') return String(bookmark._id);
+    return String(bookmark);
+  };
+
+  const isBookmarked = user?.bookmarks?.some(
+    (b) => normalizeBookmarkId(b) === storyId
   );
 
   const handleBookmark = async () => {
@@ -16,9 +24,10 @@ const StoryCard = ({ story }) => {
     }
 
     try {
-      await api.post(`/stories/${story._id}/bookmark`);
-      setIsBookmarked(!isBookmarked);
-      toggleBookmarkContext(story._id);
+      const { data } = await api.post(`/stories/${storyId}/bookmark`);
+      if (data?.bookmarks) {
+        updateBookmarks(data.bookmarks);
+      }
     } catch (error) {
       console.error('Error toggling bookmark', error);
     }
