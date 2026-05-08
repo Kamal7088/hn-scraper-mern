@@ -318,6 +318,44 @@ body {
   padding: 48px;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container { padding: 0 24px; }
+  .bento-item { padding: 40px; }
+  .story-card { padding: 32px; }
+}
+
+@media (max-width: 860px) {
+  .stories-grid { gap: 24px; }
+  .story-card { flex-direction: column; align-items: stretch; gap: 18px; }
+  .story-content h3 { font-size: 20px; }
+  .story-meta { flex-wrap: wrap; }
+}
+
+@media (max-width: 760px) {
+  .container { padding: 0 18px; }
+  .story-card { padding: 24px; }
+  .story-meta { gap: 12px; font-size: 13px; }
+  .auth-card { width: 100%; padding: 32px 24px; }
+  .auth-grid { min-height: auto; padding: 40px 0; }
+  .input-group input { padding: 14px 16px; }
+  .btn { width: 100%; justify-content: center; }
+  .pagination { flex-direction: column; gap: 12px; }
+}
+
+@media (max-width: 560px) {
+  .container { padding: 0 14px; }
+  .stories-grid { gap: 18px; }
+  .story-card { padding: 18px; border-radius: 24px; }
+  .story-content h3 { font-size: 18px; }
+  .story-meta { gap: 10px; font-size: 13px; }
+  .input-group label { font-size: 11px; }
+  .input-group input { padding: 12px 14px; }
+  .btn { font-size: 14px; }
+  nav { padding: 0 12px; }
+}
+
+
 .bento-large {
   grid-column: span 8;
 }

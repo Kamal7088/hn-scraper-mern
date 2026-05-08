@@ -157,7 +157,7 @@ const Login = () => {
           max-width: 620px;
           position: relative;
           z-index: 10;
-          margin-left:100px;
+          margin-left: 100px;
         }
 
         .auth-card {
@@ -169,6 +169,26 @@ const Login = () => {
           border: 1px solid var(--border);
           box-shadow: 0 40px 100px rgba(0,0,0,0.8);
           overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+          .auth-page-wrapper {
+            position: relative;
+            padding: 40px 18px;
+          }
+          .auth-container { margin-left: 0; padding: 0; }
+          .auth-card { padding: 36px 28px; }
+          .form-grid-row { grid-template-columns: 1fr; gap: 18px; }
+        }
+
+        @media (max-width: 650px) {
+          .auth-page-wrapper { padding: 30px 14px; }
+          .auth-card { padding: 28px 18px; }
+          .form-grid-row { grid-template-columns: 1fr; gap: 14px; }
+          .auth-header h2 { font-size: 24px; }
+          .auth-header p { font-size: 13px; }
+          .input-field input { padding: 13px 14px; }
+          .auth-submit-btn { padding: 14px; font-size: 14px; }
         }
 
         .form-grid-row {

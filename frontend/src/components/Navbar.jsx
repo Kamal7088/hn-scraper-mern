@@ -65,7 +65,7 @@ const Navbar = () => {
             ) : (
               <div className="guest-links">
                 <Link to="/register" className="nav-cta-btn">
-                  <span>ACCESS_PORTAL</span>
+                  <span>Register/Login</span>
                   <Globe size={18} />
                 </Link>
               </div>
@@ -256,8 +256,94 @@ const Navbar = () => {
 
         @media (max-width: 950px) {
           .system-status-tag, .brand-sub, .nav-link-item span { display: none; }
-          .nav-container { padding: 0 20px; }
+          .nav-container { padding: 0 20px; gap: 16px; }
           .nav-link-item { padding: 10px; }
+          .nav-left-group, .nav-right-group { gap: 16px; }
+        }
+
+        @media (max-width: 760px) {
+          .nav-fixed-wrapper {
+            position: sticky;
+            height: auto;
+            padding: 16px 0;
+          }
+          .nav-container {
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+          }
+          .nav-left-group, .nav-right-group {
+            flex: 1;
+            min-width: 0;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+          }
+          .nav-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            flex-wrap: wrap;
+          }
+          .internal-links {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            width: auto;
+          }
+          .nav-link-item {
+            padding: 10px 12px;
+            font-size: 13px;
+          }
+          .user-terminal-pill {
+            margin-left: auto;
+            flex-shrink: 0;
+          }
+          .nav-cta-btn {
+            width: auto;
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .nav-container {
+            padding: 0 16px;
+          }
+          .nav-left-group {
+            width: 100%;
+            justify-content: space-between;
+            gap: 14px;
+          }
+          .nav-right-group {
+            width: 100%;
+            justify-content: flex-end;
+          }
+          .nav-actions {
+            width: 100%;
+            justify-content: flex-end;
+            gap: 10px;
+          }
+          .internal-links {
+            justify-content: flex-start;
+            width: 100%;
+            gap: 8px;
+          }
+          .nav-link-item {
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+            padding: 8px 10px;
+          }
+          .user-terminal-pill {
+            width: auto;
+            justify-content: flex-end;
+          }
+          .nav-cta-btn {
+            width: auto;
+          }
         }
       `}} />
     </nav>
