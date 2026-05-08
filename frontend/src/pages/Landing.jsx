@@ -37,8 +37,8 @@ const Landing = () => {
                     <div className="hero-image-container reveal" style={{ animationDelay: '0.4s' }}>
                         <div className="image-wrapper">
                             <img 
-                                src="/hero_tech_visual_v4_1778182695535.png" 
-                                alt="World Class Tech Visual" 
+                                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070" 
+                                alt="Advanced Tech Infrastructure" 
                                 className="hero-img-pro"
                             />
                             <div className="image-overlay"></div>
