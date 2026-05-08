@@ -48,8 +48,11 @@ app.get('/', (req, res) => {
 
 // Mount routes
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/stories', storyRoutes);
+app.use('/stories', storyRoutes);
 app.post('/api/scrape', manualScrape);
+app.post('/scrape', manualScrape);
 
 // Schedule scraper to run automatically
 cron.schedule('0 * * * *', () => { // runs every hour
