@@ -273,30 +273,36 @@ const Navbar = () => {
             justify-content: space-between;
             gap: 16px;
           }
-          .nav-left-group, .nav-right-group {
+          .nav-left-group {
             flex: 1;
             min-width: 0;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 12px;
+          }
+          .nav-right-group {
+            width: auto;
+            justify-content: flex-end;
             gap: 12px;
           }
           .nav-actions {
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
           }
           .internal-links {
             display: flex;
             justify-content: flex-start;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 8px;
             width: auto;
           }
           .nav-link-item {
-            padding: 10px 12px;
+            padding: 10px 10px;
             font-size: 13px;
+            white-space: nowrap;
           }
           .user-terminal-pill {
             margin-left: auto;
@@ -312,28 +318,35 @@ const Navbar = () => {
           .nav-container {
             padding: 0 16px;
           }
-          .nav-left-group {
-            width: 100%;
-            justify-content: space-between;
-            gap: 14px;
+          .logo-text,
+          .system-status-tag {
+            display: none;
           }
+          .nav-left-group {
+            width: auto;
+            flex: 1;
+            justify-content: flex-start;
+            gap: 10px;
+          }
+          .brand-main { display: none; }
           .nav-right-group {
-            width: 100%;
+            width: auto;
             justify-content: flex-end;
           }
           .nav-actions {
             width: 100%;
             justify-content: flex-end;
             gap: 10px;
+            overflow-x: auto;
           }
           .internal-links {
             justify-content: flex-start;
-            width: 100%;
-            gap: 8px;
+            width: auto;
+            gap: 6px;
           }
           .nav-link-item {
-            flex: 1;
-            min-width: 120px;
+            flex: 0 0 auto;
+            min-width: 70px;
             justify-content: center;
             padding: 8px 10px;
           }
