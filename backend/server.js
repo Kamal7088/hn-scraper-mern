@@ -22,7 +22,14 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'].filter(Boolean);
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://hn-scraper-mern.vercel.app',
+  'https://hn-scraper-mern-1.onrender.com',
+  'https://hn-scraper-mern-2.onrender.com'
+].filter(Boolean);
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
